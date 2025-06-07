@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
@@ -26,7 +27,7 @@ app.get('/matches', async (req, res) => {
             date: game.date,
         }));
 
-        res.json(response.data);
+        res.json(matches);
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Failed to fetch matches' });
